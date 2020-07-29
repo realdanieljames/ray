@@ -42,38 +42,36 @@ const Ray = function () {
 
         indexOf: function (value) {
             //get the index number value
-            for (let i = 0; i < this.length; i++) {
+            for (let key = 0; key < this.length; key++) {
 
-                if (value === this[i]) {
-                    return i
+                if (value === this[key]) {
+                    return key
                 }
             }
             return -1
         },
         //      ✓ is a method
         shift: function () {
-            // 
-            //      ✓ decrements the length by 1    
-            this.length = this.length - 1;
-            
-            let lastIndex = this.length;
-            // return this[firstIndex]
+            const removed = this[0];
 
-            let lastIndexValue = this[lastIndex]
-            console.log(this)
-            console.log(lastIndexValue)
+            for (let i = 0; i < this.length -1; i ++){
+                this[i] = this[i + 1];
+            }
+            delete this[this.length -1]
+            this.length --;
 
-            delete this[lastIndex]
-
-
-            // return lastIndexValue
+            return removed
         },
 
 
         unshift: function (value) {
 
-            result = value + this.length
-            return result
+            for(let i = this.length; i >=1; i --){
+                this[i] = this[i -1];
+            }
+            this[0] = value;
+
+            this.length ++
         }
     }
     return ray;
